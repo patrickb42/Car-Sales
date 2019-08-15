@@ -1,7 +1,7 @@
 import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
 
-const AdditionalFeatures = ({ store }) => {
+const AdditionalFeatures = ({ store, addFeature }) => {
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -9,7 +9,7 @@ const AdditionalFeatures = ({ store }) => {
         ? (
           <ol type="1">
             {store.map(item => (
-              <AdditionalFeature key={item.id} feature={item} />
+              <AdditionalFeature key={item.id} feature={item} addFeature={addFeature} />
             ))}
           </ol>
         ) : (

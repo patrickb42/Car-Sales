@@ -1,4 +1,4 @@
-export const ADD_FEATURE = 'ADD_FEATURE';
+import { ADD_FEATURE, REMOVE_FEATURE } from '../actions';
 
 const initialState = {
   additionalPrice: 0,
@@ -30,8 +30,16 @@ export const reducer = (state = initialState, { type, payload }) => {
           ],
         },
       };
+    case REMOVE_FEATURE:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(feature => feature.id !== payload),
+        },
+      };
     default:
-      if (state !== initialState) throw new Error(`${type} is not a valid action type`);
-      else return state;
+      if (state === initialState) return state;
+      else throw new Error(`${type} is not a valid action type`);
   }
 };
